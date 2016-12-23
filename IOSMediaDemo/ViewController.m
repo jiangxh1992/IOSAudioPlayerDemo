@@ -20,6 +20,24 @@
 
 @implementation ViewController
 
+#pragma mark -life cycle
+// 视图加载
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // 开启定时器
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(update) userInfo:nil repeats:true];
+    // 初始化进度条为0
+    [self.processView setProgress:0 animated:NO];
+    // 初始化进度条
+    [_slider setMinimumValue:0];
+    [_slider setMaximumValue:1.0];
+    [_slider setValue:0.5];
+    [_slider setContinuous:YES];
+    [_slider addTarget:self action:@selector(sliderValChanged) forControlEvents:UIControlEventValueChanged];
+    
+}
+
 // audioPlayer懒加载getter方法
 - (AVAudioPlayer *)audioPlayer {
     if (!_audioPlayer) {
@@ -45,27 +63,11 @@
     return _audioPlayer;
 }
 
-// 视图加载
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // 开启定时器
-    _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(update) userInfo:nil repeats:true];
-    // 初始化进度条为0
-    [self.processView setProgress:0 animated:false];
-    // 初始化进度条
-    [_slider setMinimumValue:0];
-    [_slider setMaximumValue:1.0];
-    [_slider setValue:0.5];
-    [_slider setContinuous:true];
-    [_slider addTarget:self action:@selector(sliderValChanged) forControlEvents:UIControlEventValueChanged];
-}
-
 // 定时更新
 - (void)update {
     // 更新进度条
     if (_audioPlayer && _audioPlayer.isPlaying) {
-        [_processView setProgress:(_audioPlayer.currentTime/_audioPlayer.duration) animated:true];
+        [_processView setProgress:(_audioPlayer.currentTime/_audioPlayer.duration) animated:YES];
     }
 }
 
@@ -92,6 +94,8 @@
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
     // 播放完成...
     NSLog(@"播放完成...");
+    // 关闭会话好让其他音频继续播放【这个不一定在这里设置，可以自定合适的时机释放会话】
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
 }
 - (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error {
     // 播放器解码错误...

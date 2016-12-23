@@ -57,6 +57,7 @@
 		D20E5B081E0CEDC6006C2AFC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D20E5B0A1E0CEFAB006C2AFC /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		D20E5B0B1E0CEFAB006C2AFC /* snow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snow.wav; sourceTree = "<group>"; };
+		D2FA9ECA1E0D18E4005657DB /* IOSMediaDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IOSMediaDemo.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +110,7 @@
 		D20E5AD31E0CED37006C2AFC /* IOSMediaDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D2FA9ECA1E0D18E4005657DB /* IOSMediaDemo.entitlements */,
 				D20E5AD71E0CED37006C2AFC /* AppDelegate.h */,
 				D20E5AD81E0CED37006C2AFC /* AppDelegate.m */,
 				D20E5ADA1E0CED37006C2AFC /* ViewController.h */,
@@ -225,8 +227,16 @@
 				TargetAttributes = {
 					D20E5AD01E0CED37006C2AFC = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = V4SYMZQA29;
+						DevelopmentTeam = C6G3U74T9Y;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
 					};
 					D20E5AE91E0CED37006C2AFC = {
 						CreatedOnToolsVersion = 8.0;
@@ -447,11 +457,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V4SYMZQA29;
+				DEVELOPMENT_TEAM = C6G3U74T9Y;
 				INFOPLIST_FILE = IOSMediaDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jiangxh.IOSMediaDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = jiangxh.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -460,11 +470,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V4SYMZQA29;
+				DEVELOPMENT_TEAM = C6G3U74T9Y;
 				INFOPLIST_FILE = IOSMediaDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jiangxh.IOSMediaDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = jiangxh.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -538,6 +548,7 @@
 				D20E5B001E0CED37006C2AFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D20E5B011E0CED37006C2AFC /* Build configuration list for PBXNativeTarget "IOSMediaDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +557,7 @@
 				D20E5B031E0CED37006C2AFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D20E5B041E0CED37006C2AFC /* Build configuration list for PBXNativeTarget "IOSMediaDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -554,6 +566,7 @@
 				D20E5B061E0CED37006C2AFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
